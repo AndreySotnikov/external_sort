@@ -78,8 +78,8 @@ void MainWindow::on_pbGenerate_clicked() {
     sz = ui->sbSize->value();
     ui->lwRandom->clear();
     ui->lwSorted->clear();
-    //fl->generateRandom(sz);
-    fl->generateReverse(sz);
+    fl->generateRandom(sz);
+    //fl->generateReverse(sz);
     ifstream fin(fl->getFilename().c_str());
     int data;
     for (int i = 0; i < sz; i++) {

@@ -2,18 +2,18 @@
 #define MYFILE_H
 
 #include <cstdio>
-#include <fstream>
 #include <string>
 #include <cmath>
 #include <cstdlib>
 #include <time.h>
 
+#include <fstream>
+
 using namespace std;
 
 class MyFile {
 private:
-    //FILE* f;
-    fstream f;
+    FILE* f;
     string fname;
     int flast;
     bool feosec;
@@ -39,7 +39,11 @@ public:
     void setFlast(int _i);
     string getName();
 
+    void writeData(int _d);
+    int readData();
+
     FILE* getFile();
+
 
 };
 

@@ -1,7 +1,6 @@
 #include "myfile.h"
 
-MyFile::MyFile()
-{
+MyFile::MyFile() {
 }
 
 MyFile::MyFile(string _s) {
@@ -12,6 +11,7 @@ MyFile::MyFile(string _s) {
 }
 
 void MyFile::closeFile() {
+    //fs.close();
     fclose(f);
 }
 
@@ -20,13 +20,12 @@ void MyFile::copy(MyFile& f2) {
     fprintf(f2.getFile(), "%c", ' ');
     fprintf(f2.getFile(),"%d",this->flast);
     f2.setFlast(this->flast);
+
     this->eof = feof(f);
-
     if (!eof) {
-
         fscanf(f,"%d",&flast);
     }
-    feosec = (bool)(this->eof || (f2.getLast() > flast));
+    feosec = (this->eof || (f2.getLast() > flast));
     //feosec = (bool)(feof(f) || (f2.getLast() > flast));
 }
 
@@ -47,16 +46,16 @@ bool MyFile::isEmpty() {
 
     long sz;
 
-    sz = ftell(f);
-    return (sz == 0 && feof(f));
+    //sz = ftell(f);
+    //return (sz == 0 && feof(f));
 
 
     fseek(f, 0, SEEK_END);
     sz = ftell(f);
     fseek(f, 0, SEEK_SET);
-    bool result = sz == 0;
+    //bool result = sz == 0;
     //fclose(f);
-    return result;
+    return sz == 0;
 }
 
 void MyFile::nextSec() {
@@ -64,17 +63,23 @@ void MyFile::nextSec() {
 }
 
 void MyFile::openRead() {
-    f = fopen(fname.c_str(),"r");
-    fscanf(f,"%d",&flast);
-    feosec = feof(f);
-    eof = feof(f);
-    //fseek(f, 0, SEEK_SET);
-    //if (!eof)
-        //fscanf(f,"%d",&flast);
+    f = fopen(fname.c_str(),"rb");
+    //fscanf(f,"%d",&flast);
+   // char c;
+    //fscanf(f, "%d", &c);
+  feosec = this->isEmpty();
+  eof = feosec;
+    //feosec = feof(f);
+    //eof = feof(f);
+    //fprintf(f, "%d", c);
+
+
+    if (!eof)
+        fscanf(f,"%d",&flast);
 }
 
 void MyFile::openWrite() {
-    f = fopen(fname.c_str(),"w");
+    f = fopen(fname.c_str(),"wb");
 }
 
 bool MyFile::isEosec() {
@@ -92,6 +97,16 @@ FILE* MyFile::getFile() {
 string MyFile::getName() {
     return fname;
 }
+
+//void MyFile::writeData(int _d) {
+//    fs << d << " ";
+//}
+
+//int MyFile::readData() {
+//    int d;
+//    fs >> d;
+//    return d;
+//}
 
 int MyFile::getLast() {
     return this->flast;

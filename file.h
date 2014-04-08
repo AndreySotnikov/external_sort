@@ -2,8 +2,6 @@
 #define FILE_H
 
 #include <cstdio>
-#include <stdio.h>
-#include <fstream>
 #include <string>
 #include <cmath>
 #include <cstdlib>

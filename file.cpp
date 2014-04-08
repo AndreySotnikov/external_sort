@@ -15,7 +15,7 @@ void File::generateRandom(int maxSize) {
     string fname = "tmp";
     ofstream fout (fname.c_str());
     int sz = maxSize;// rand() % maxSize + 15;
-    fout << rand() % 3333;
+    fout << " " << rand() % 3333;
     for (int i = 1; i < sz; i++)
         fout << " " << rand() % 3333;
     fout.close();
@@ -27,7 +27,7 @@ void File::generateReverse(int maxSize) {
     string fname = "tmp";
     ofstream fout (fname.c_str());
     int sz = maxSize;// rand() % maxSize;
-    fout << sz;
+    fout << " " << sz;
     for (int i = sz-1; i > 0; i--)
         fout << " " << i;
     fout.close();
@@ -336,35 +336,29 @@ void File::newMerge() {
 
 
 
-    if (f1.getLast() <= f2.getLast()) {
-        f1.copy(f);
-        f1.nextSec();
-    } else {
-        f2.copy(f);
-        f2.nextSec();
-    }
-
-    count = 1;
+    count = 0;
 
     while (!f1.isEof() && !f2.isEof()) {
         while (!f1.isEosec() && !f2.isEosec()) {
             if (f1.getLast() <= f2.getLast()) {
                 f1.copy(f);
-                f1.nextSec();
+                //f1.nextSec();
             } else {
                 f2.copy(f);
-                f2.nextSec();
+                //f2.nextSec();
             }
         }
 
         if (!f1.isEosec()) {
             f1.copySec(f);
-            f1.nextSec();
+            //f1.nextSec();
         }
         if (!f2.isEosec()) {
             f2.copySec(f);
-            f2.nextSec();
+            //f2.nextSec();
         }
+        f1.nextSec();
+        f2.nextSec();
 
 
         count++;
