@@ -21,11 +21,23 @@ void MainWindow::configureUi() {
     ui->twRead->setHorizontalHeaderLabels(QStringList() << "File Size" << "Random File" << "Reverse File");
     ui->twTime->setHorizontalHeaderLabels(QStringList() << "File Size" << "Random File" << "Reverse File");
     ui->twCycle->setHorizontalHeaderLabels(QStringList() << "File Size" << "Random File" << "Reverse File");
+
+    ui->twCycle->setGeometry(ui->twTime->geometry());
+
+    ui->twTime->horizontalHeader()->setDefaultSectionSize(ui->tabWidget->width() / ui->twTime->columnCount());
+    ui->twCompare->horizontalHeader()->setDefaultSectionSize(ui->tabWidget->width() / ui->twTime->columnCount());
+    ui->twRead->horizontalHeader()->setDefaultSectionSize(ui->tabWidget->width() / ui->twTime->columnCount());
+    ui->twCycle->horizontalHeader()->setDefaultSectionSize(ui->tabWidget->width() / ui->twTime->columnCount());
 }
 
 void MainWindow::process() {
-    const int SIZE = 8;
-    const int sizes[SIZE] = {10, 100, 500, 1000, 10000, 50000, 100000, 1000000};
+    //const int SIZE = 8;
+    //const int sizes[SIZE] = {10, 100, 500, 1000, 10000, 50000, 100000, 1000000};
+    const int SIZE = 1;
+    int sizes[SIZE];
+    ///TODO Input to sizes[0]
+    ///
+    sizes[0] = QInputDialog::getInt(this, "Input num of elements", "Input num of elements", 10, 1, 1000000);
     configureUi();
 
     ui->twCompare->setRowCount(SIZE);
@@ -39,7 +51,7 @@ void MainWindow::process() {
 
 
 
-    for (int i = 0;  i < SIZE - 1; i++) {
+    for (int i = 0;  i < SIZE; i++) {
 
         ui->twCompare->setItem(i, 0, new QTableWidgetItem(QString::number(sizes[i])));
         ui->twRead->setItem(i, 0, new QTableWidgetItem(QString::number(sizes[i])));
@@ -48,7 +60,7 @@ void MainWindow::process() {
         qApp->processEvents();
 
         fl->generateRandom(sizes[i]);
-        //fl->sort();
+        fl->newSort();
 
         ui->twCompare->setItem(i, 1, new QTableWidgetItem(QString::number(fl->getCompares())));
         ui->twRead->setItem(i, 1, new QTableWidgetItem(QString::number(fl->getReads())));
@@ -57,7 +69,7 @@ void MainWindow::process() {
         qApp->processEvents();
 
         fl->generateReverse(sizes[i]);
-        //fl->sort();
+        fl->newSort();
         ui->twCompare->setItem(i, 2, new QTableWidgetItem(QString::number(fl->getCompares())));
         ui->twRead->setItem(i, 2, new QTableWidgetItem(QString::number(fl->getReads())));
         ui->twTime->setItem(i, 2, new QTableWidgetItem(QString::number((fl->getTime()))));

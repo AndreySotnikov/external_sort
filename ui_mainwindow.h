@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.0.2
+** Created by: Qt User Interface Compiler version 5.1.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -57,7 +57,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(428, 374);
+        MainWindow->resize(458, 376);
         actionProcess = new QAction(MainWindow);
         actionProcess->setObjectName(QStringLiteral("actionProcess"));
         centralWidget = new QWidget(MainWindow);
@@ -65,19 +65,20 @@ public:
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName(QStringLiteral("tabWidget"));
         tabWidget->setEnabled(true);
-        tabWidget->setGeometry(QRect(30, 20, 381, 281));
+        tabWidget->setGeometry(QRect(20, 20, 421, 281));
         tabWidget->setTabPosition(QTabWidget::North);
         tabWidget->setTabShape(QTabWidget::Rounded);
         tabWidget->setElideMode(Qt::ElideNone);
         tabWidget->setUsesScrollButtons(true);
-        tabWidget->setDocumentMode(false);
+        tabWidget->setDocumentMode(true);
+        tabWidget->setMovable(false);
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
         twTime = new QTableWidget(tab_2);
         if (twTime->columnCount() < 3)
             twTime->setColumnCount(3);
         twTime->setObjectName(QStringLiteral("twTime"));
-        twTime->setGeometry(QRect(-5, 1, 491, 251));
+        twTime->setGeometry(QRect(5, 1, 481, 251));
         twTime->setColumnCount(3);
         twTime->verticalHeader()->setVisible(false);
         tabWidget->addTab(tab_2, QString());
@@ -87,7 +88,7 @@ public:
         if (twCompare->columnCount() < 3)
             twCompare->setColumnCount(3);
         twCompare->setObjectName(QStringLiteral("twCompare"));
-        twCompare->setGeometry(QRect(-5, 1, 491, 251));
+        twCompare->setGeometry(QRect(5, 1, 481, 251));
         twCompare->setColumnCount(3);
         twCompare->verticalHeader()->setVisible(false);
         tabWidget->addTab(tab, QString());
@@ -97,7 +98,7 @@ public:
         if (twRead->columnCount() < 3)
             twRead->setColumnCount(3);
         twRead->setObjectName(QStringLiteral("twRead"));
-        twRead->setGeometry(QRect(-5, 1, 491, 251));
+        twRead->setGeometry(QRect(5, 1, 481, 251));
         twRead->setColumnCount(3);
         twRead->verticalHeader()->setVisible(false);
         tabWidget->addTab(tab_3, QString());
@@ -107,8 +108,9 @@ public:
         if (twCycle->columnCount() < 3)
             twCycle->setColumnCount(3);
         twCycle->setObjectName(QStringLiteral("twCycle"));
-        twCycle->setGeometry(QRect(-5, 1, 301, 251));
+        twCycle->setGeometry(QRect(5, 1, 411, 251));
         twCycle->setColumnCount(3);
+        twCycle->verticalHeader()->setVisible(false);
         tabWidget->addTab(tab_4, QString());
         tab_5 = new QWidget();
         tab_5->setObjectName(QStringLiteral("tab_5"));
@@ -133,7 +135,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 428, 25));
+        menuBar->setGeometry(QRect(0, 0, 458, 20));
         menuAction = new QMenu(menuBar);
         menuAction->setObjectName(QStringLiteral("menuAction"));
         MainWindow->setMenuBar(menuBar);
@@ -149,7 +151,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

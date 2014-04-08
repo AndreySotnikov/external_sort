@@ -262,16 +262,26 @@ void File::setName(string &_name) {
 
 
 void File::newSort() {
+    time = 0;
+    compCount = 0;
+    readCount = 0;
+    cycleCount = 0;
+
+
     f = MyFile(name);
     string name1 = "nmsort_1";
     string name2 = "nmsort_2";
     f1 = MyFile(name1);
     f2 = MyFile(name2);
 
+    int t1 = clock();
     do {
+        cycleCount++;
         newDistribute();
         newMerge();
     } while (count > 1);
+    int t2 = clock();
+    this->time = 1.0*(t2 - t1) / CLOCKS_PER_SEC;
 
     f1.deleteFile();
     f2.deleteFile();
@@ -284,6 +294,9 @@ int File::getLast() {
 }
 
 void File::newDistribute() {
+
+    readCount++;
+
     f.openRead();
     f1.openWrite();
     f2.openWrite();
@@ -301,7 +314,7 @@ void File::newDistribute() {
     }
     int dest = 1;
     while (!f.isEof()) {
-        //f.nextSec();
+        compCount++;
         if (dest == 1) {
             if (f.getLast() >= f1.getLast()) {
                 f.copySec(f1);
@@ -328,11 +341,11 @@ void File::newDistribute() {
 
 void File::newMerge() {
 
-
-
     f.openWrite();
     f1.openRead();
     f2.openRead();
+
+    this->readCount += 2;
 
 
 
@@ -340,12 +353,11 @@ void File::newMerge() {
 
     while (!f1.isEof() && !f2.isEof()) {
         while (!f1.isEosec() && !f2.isEosec()) {
+            this->compCount++;
             if (f1.getLast() <= f2.getLast()) {
                 f1.copy(f);
-                //f1.nextSec();
             } else {
                 f2.copy(f);
-                //f2.nextSec();
             }
         }
 

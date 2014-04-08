@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QInputDialog>
 #include "file.h"
 
 namespace Ui {

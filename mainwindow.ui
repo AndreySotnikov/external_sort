@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>428</width>
-    <height>374</height>
+    <width>458</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,9 +20,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>20</y>
-      <width>381</width>
+      <width>421</width>
       <height>281</height>
      </rect>
     </property>
@@ -33,7 +33,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>3</number>
     </property>
     <property name="elideMode">
      <enum>Qt::ElideNone</enum>
@@ -42,6 +42,9 @@
      <bool>true</bool>
     </property>
     <property name="documentMode">
+     <bool>true</bool>
+    </property>
+    <property name="movable">
      <bool>false</bool>
     </property>
     <widget class="QWidget" name="tab_2">
@@ -51,9 +54,9 @@
      <widget class="QTableWidget" name="twTime">
       <property name="geometry">
        <rect>
-        <x>-5</x>
+        <x>5</x>
         <y>1</y>
-        <width>491</width>
+        <width>481</width>
         <height>251</height>
        </rect>
       </property>
@@ -75,9 +78,9 @@
      <widget class="QTableWidget" name="twCompare">
       <property name="geometry">
        <rect>
-        <x>-5</x>
+        <x>5</x>
         <y>1</y>
-        <width>491</width>
+        <width>481</width>
         <height>251</height>
        </rect>
       </property>
@@ -99,9 +102,9 @@
      <widget class="QTableWidget" name="twRead">
       <property name="geometry">
        <rect>
-        <x>-5</x>
+        <x>5</x>
         <y>1</y>
-        <width>491</width>
+        <width>481</width>
         <height>251</height>
        </rect>
       </property>
@@ -123,15 +126,18 @@
      <widget class="QTableWidget" name="twCycle">
       <property name="geometry">
        <rect>
-        <x>-5</x>
+        <x>5</x>
         <y>1</y>
-        <width>301</width>
+        <width>411</width>
         <height>251</height>
        </rect>
       </property>
       <property name="columnCount">
        <number>3</number>
       </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
       <column/>
       <column/>
       <column/>
@@ -211,8 +217,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>428</width>
-     <height>25</height>
+     <width>458</width>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAction">
