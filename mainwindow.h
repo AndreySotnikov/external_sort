@@ -20,8 +20,11 @@ private:
     Ui::MainWindow *ui;
     void configureUi();
     File* fl;
+    int sz;
 private slots:
     void process();
+    void on_pbGenerate_clicked();
+    void on_pbSort_clicked();
 };
 
 #endif // MAINWINDOW_H
